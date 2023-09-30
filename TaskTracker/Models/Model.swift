@@ -21,6 +21,8 @@ class Model: ObservableObject {
     
     func addTask(taskItem: TaskItem) async throws {
         let record = try await db.save(taskItem.record)
+        guard let task = TaskItem(record: record) else { return }
+        tasksDictionary[task.recordId!] = task
     }
     
     func retrieveTask() async throws {
