@@ -21,8 +21,20 @@ struct TodoListView: View {
                         try await model.addTask(taskItem: taskItem)
                     }
                 }
+            List(model.tasks, id: \.recordId) { taskItem in
+                Text(taskItem.title)
+                
+            }
             Spacer()
-        }.padding()
+        }.task {
+            do {
+                try await model.retrieveTask()
+            }
+            catch {
+                print(error)
+            }
+        }
+        .padding()
     }
 }
 
