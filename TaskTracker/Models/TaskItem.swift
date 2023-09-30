@@ -21,6 +21,17 @@ struct TaskItem {
     let dateAssigned: Date
     var isCompleted: Bool = false
 }
+extension TaskItem {
+    init?(record: CKRecord){
+        guard let title = record[TaskRecordKeys.title.rawValue] as? String,
+              let dateAssigned = record[TaskRecordKeys.dateAssigned.rawValue] as? Date,
+              let isCompleted = record[TaskRecordKeys.isCompleted.rawValue] as? Bool else {
+            return nil
+        }
+        
+        self.init(recordId: record.recordID, title: title, dateAssigned: dateAssigned, isCompleted: isCompleted)
+    }
+}
 
 extension TaskItem {
     var record: CKRecord {
