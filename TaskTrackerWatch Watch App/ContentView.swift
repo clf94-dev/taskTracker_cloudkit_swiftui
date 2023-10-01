@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var model = Model()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            List(model.tasks, id: \.recordId) { taskItem in
+                Text(taskItem.title)
+                
+            }
+        }
+        .task {
+            do {
+                try await model.retrieveTask()
+            }
+            catch {
+                print(error)
+            }
         }
         .padding()
     }
