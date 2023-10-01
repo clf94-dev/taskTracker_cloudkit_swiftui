@@ -17,6 +17,8 @@
 		325378562AC8A8DF007E92EF /* TaskTrackerWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 325378492AC8A8DD007E92EF /* TaskTrackerWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3253785B2AC8A90B007E92EF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253782A2AC88FFF007E92EF /* Model.swift */; };
 		3253785C2AC8A90E007E92EF /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325378252AC88BA1007E92EF /* TaskItem.swift */; };
+		3253785F2AC9A32E007E92EF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253785E2AC9A32E007E92EF /* TaskListView.swift */; };
+		325378602AC9A32E007E92EF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253785E2AC9A32E007E92EF /* TaskListView.swift */; };
 		32CB3B662AC7F51200272546 /* TaskTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CB3B652AC7F51200272546 /* TaskTrackerApp.swift */; };
 		32CB3B682AC7F51200272546 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CB3B672AC7F51200272546 /* ContentView.swift */; };
 		32CB3B6A2AC7F51500272546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CB3B692AC7F51500272546 /* Assets.xcassets */; };
@@ -60,6 +62,7 @@
 		325378522AC8A8DF007E92EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3253785A2AC8A8EA007E92EF /* TaskTrackerWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TaskTrackerWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		3253785D2AC9476E007E92EF /* TaskTrackerWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TaskTrackerWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3253785E2AC9A32E007E92EF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		32CB3B622AC7F51200272546 /* TaskTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CB3B652AC7F51200272546 /* TaskTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTrackerApp.swift; sourceTree = "<group>"; };
 		32CB3B672AC7F51200272546 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				325378282AC88E37007E92EF /* TodoListView.swift */,
+				3253785E2AC9A32E007E92EF /* TaskListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,6 +278,7 @@
 			files = (
 				3253785B2AC8A90B007E92EF /* Model.swift in Sources */,
 				3253784E2AC8A8DD007E92EF /* ContentView.swift in Sources */,
+				325378602AC9A32E007E92EF /* TaskListView.swift in Sources */,
 				3253784C2AC8A8DD007E92EF /* TaskTrackerWatchApp.swift in Sources */,
 				3253785C2AC8A90E007E92EF /* TaskItem.swift in Sources */,
 			);
@@ -290,6 +295,7 @@
 				32CB3B682AC7F51200272546 /* ContentView.swift in Sources */,
 				32CB3B662AC7F51200272546 /* TaskTrackerApp.swift in Sources */,
 				32CB3B722AC7F51500272546 /* TaskTracker.xcdatamodeld in Sources */,
+				3253785F2AC9A32E007E92EF /* TaskListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@ struct TaskTrackerApp: App {
         WindowGroup {
             TodoListView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(Model())
         }
     }
 }

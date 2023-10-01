@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodoListView: View {
-    @StateObject private var model = Model()
+    @EnvironmentObject private var model: Model
     @State private var taskTitle: String = ""
     var body: some View {
         VStack {
@@ -21,10 +21,7 @@ struct TodoListView: View {
                         try await model.addTask(taskItem: taskItem)
                     }
                 }
-            List(model.tasks, id: \.recordId) { taskItem in
-                Text(taskItem.title)
-                
-            }
+            TaskListView()
             Spacer()
         }.task {
             do {
@@ -40,4 +37,5 @@ struct TodoListView: View {
 
 #Preview {
     TodoListView()
+        .environmentObject(Model())
 }
