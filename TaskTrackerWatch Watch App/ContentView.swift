@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var model = Model()
+    @EnvironmentObject private var model : Model
     @Environment(\.scenePhase) var scenePhase
     var body: some View {
         VStack {
-            List(model.tasks, id: \.recordId) { taskItem in
-                Text(taskItem.title)
-                
-            }
+            TaskListView()
         }
         .onChange(of: scenePhase) {
             if scenePhase == .active {
