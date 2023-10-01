@@ -12,7 +12,7 @@ import CloudKit
 @MainActor
 class Model: ObservableObject {
     
-    private var db = CKContainer.default().privateCloudDatabase
+    private var db = CKContainer(identifier: "iCloud.com.carmenlucas.TaskTracker")
     @Published private var tasksDictionary: [CKRecord.ID: TaskItem] = [:]
     
     var tasks: [TaskItem] {
@@ -20,7 +20,7 @@ class Model: ObservableObject {
     }
     
     func addTask(taskItem: TaskItem) async throws {
-        let record = try await db.save(taskItem.record)
+        let record = try await db.privateCloudDatabase.save(taskItem.record)
         guard let task = TaskItem(record: record) else { return }
         tasksDictionary[task.recordId!] = task
     }
@@ -29,7 +29,7 @@ class Model: ObservableObject {
         let query = CKQuery(recordType: TaskRecordKeys.type.rawValue, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "dateAssigned", ascending: false)]
         
-        let result = try await db.records(matching: query)
+        let result = try await db.privateCloudDatabase.records(matching: query)
         let records = result.matchResults.compactMap { try? $0.1.get()}
         
         records.forEach { record in
