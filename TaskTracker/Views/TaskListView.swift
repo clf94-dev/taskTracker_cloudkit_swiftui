@@ -11,7 +11,7 @@ struct TaskListView: View {
     @EnvironmentObject private var model: Model
     var body: some View {
         List(model.tasks, id: \.recordId) { taskItem in
-            Text(taskItem.title)
+            TaskItemView(task: taskItem)
             
         }
     }
