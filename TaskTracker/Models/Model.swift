@@ -7,6 +7,23 @@
 
 import Foundation
 import CloudKit
+import SwiftUI
+
+
+enum FilterOptions: String, CaseIterable, Identifiable{
+    case all
+    case completed
+    case incomplete
+}
+
+extension FilterOptions {
+    var id: String {
+        rawValue
+    }
+    var displayName: String {
+        rawValue.capitalized
+    }
+}
 
 // AGGREGATE MODEL
 @MainActor
@@ -47,6 +64,17 @@ class Model: ObservableObject {
         
         records.forEach { record in
             tasksDictionary[record.recordID] = TaskItem(record: record)
+        }
+    }
+    
+    func filterTaskItems(by filterOptions: FilterOptions) -> [TaskItem]{
+        switch filterOptions {
+            case .all:
+                return tasks
+            case .completed:
+                return tasks.filter{ $0.isCompleted }
+            case .incomplete:
+                return tasks.filter{ !$0.isCompleted }
         }
     }
 }

@@ -7,26 +7,16 @@
 
 import SwiftUI
 
-enum FilterOptions: String, CaseIterable, Identifiable{
-    case all
-    case completed
-    case incomplete
-}
-
-extension FilterOptions {
-    var id: String {
-        rawValue
-    }
-    var displayName: String{
-        rawValue.capitalized
-    }
-}
 
 struct TodoListView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject private var model: Model
     @State private var taskTitle: String = ""
-    @State private var filterOption: FilterOptions = .all
+    @State  var filterOption: FilterOptions = .all
+    
+    private var filteredTaskItems: [TaskItem] {
+        model.filterTaskItems(by: filterOption)
+    }
     var body: some View {
         VStack {
             TextField("Enter task", text: $taskTitle)
@@ -43,7 +33,7 @@ struct TodoListView: View {
                     Text(option.displayName).tag(option)
                 }
             }.pickerStyle(.segmented)
-            TaskListView()
+            TaskListView(taskItems: filteredTaskItems)
             Spacer()
         }.onChange(of: scenePhase) {
             if scenePhase == .active {

@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     var body: some View {
         VStack {
-            TaskListView()
+            TaskListView(taskItems: model.tasks)
         }
         .onChange(of: scenePhase) {
             if scenePhase == .active {

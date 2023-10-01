@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskListView: View {
     @EnvironmentObject private var model: Model
+    var taskItems: [TaskItem]
     private func updateTask(taskItem: TaskItem) {
         Task{
             do{
@@ -20,14 +21,11 @@ struct TaskListView: View {
         }
     }
     var body: some View {
-        List(model.tasks, id: \.recordId) { taskItem in
+        List(taskItems, id: \.recordId) { taskItem in
             TaskItemView(task: taskItem, onUpdate: updateTask)
             
         }
     }
 }
 
-#Preview {
-    TaskListView()
-        .environmentObject(Model())
-}
+
