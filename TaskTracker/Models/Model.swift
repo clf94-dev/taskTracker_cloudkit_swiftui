@@ -25,6 +25,15 @@ class Model: ObservableObject {
         tasksDictionary[task.recordId!] = task
     }
     
+    func updateTask(editedTask: TaskItem) async throws {
+        tasksDictionary[editedTask.recordId!]?.isCompleted = editedTask.isCompleted
+        let record = try await db.privateCloudDatabase.record(for: editedTask.recordId!)
+        record[TaskRecordKeys.isCompleted.rawValue] = editedTask.isCompleted
+        
+        try await db.privateCloudDatabase.save(record)
+        
+    }
+    
     func retrieveTask() async throws {
         let query = CKQuery(recordType: TaskRecordKeys.type.rawValue, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "dateAssigned", ascending: false)]
