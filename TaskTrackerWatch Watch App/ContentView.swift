@@ -10,10 +10,29 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject private var model : Model
     @Environment(\.scenePhase) var scenePhase
+    @State private var selectedTab: FilterOptions = .all
     var body: some View {
         VStack {
-            TaskListView(taskItems: model.tasks)
-        }
+            TabView(selection: $selectedTab)
+                {
+                    VStack(alignment: .leading){
+                        Text("All tasks")
+                            .font(.title2)
+                        TaskListView(taskItems: model.filterTaskItems(by: FilterOptions.all))
+                    }.tag(FilterOptions.all)
+                    VStack(alignment: .leading){
+                        Text("To do")
+                            .font(.title2)
+                        TaskListView(taskItems: model.filterTaskItems(by: FilterOptions.incomplete))
+                    }.tag(FilterOptions.incomplete)
+                    VStack(alignment: .leading){
+                        Text("Completed")
+                            .font(.title2)
+                        TaskListView(taskItems: model.filterTaskItems(by: FilterOptions.completed))
+                    }.tag(FilterOptions.completed)
+                }
+           
+        }.ignoresSafeArea()
         .onChange(of: scenePhase) {
             if scenePhase == .active {
                 Task{
@@ -44,4 +63,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(Model())
 }
