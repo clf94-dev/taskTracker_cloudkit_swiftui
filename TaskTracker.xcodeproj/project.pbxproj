@@ -59,6 +59,7 @@
 		3253784F2AC8A8DF007E92EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		325378522AC8A8DF007E92EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3253785A2AC8A8EA007E92EF /* TaskTrackerWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TaskTrackerWatch Watch App.entitlements"; sourceTree = "<group>"; };
+		3253785D2AC9476E007E92EF /* TaskTrackerWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TaskTrackerWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		32CB3B622AC7F51200272546 /* TaskTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CB3B652AC7F51200272546 /* TaskTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTrackerApp.swift; sourceTree = "<group>"; };
 		32CB3B672AC7F51200272546 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +109,7 @@
 		3253784A2AC8A8DD007E92EF /* TaskTrackerWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				3253785D2AC9476E007E92EF /* TaskTrackerWatch-Watch-App-Info.plist */,
 				3253785A2AC8A8EA007E92EF /* TaskTrackerWatch Watch App.entitlements */,
 				3253784B2AC8A8DD007E92EF /* TaskTrackerWatchApp.swift */,
 				3253784D2AC8A8DD007E92EF /* ContentView.swift */,
@@ -314,6 +316,7 @@
 				DEVELOPMENT_TEAM = YUBAHJ7MY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TaskTrackerWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TaskTrackerWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.carmenlucas.TaskTracker;
@@ -345,6 +348,7 @@
 				DEVELOPMENT_TEAM = YUBAHJ7MY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TaskTrackerWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TaskTrackerWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.carmenlucas.TaskTracker;

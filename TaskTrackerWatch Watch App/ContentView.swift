@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var model = Model()
+    @Environment(\.scenePhase) var scenePhase
     var body: some View {
         VStack {
             List(model.tasks, id: \.recordId) { taskItem in
@@ -16,14 +17,30 @@ struct ContentView: View {
                 
             }
         }
-        .task {
-            do {
-                try await model.retrieveTask()
-            }
-            catch {
-                print(error)
+        .onChange(of: scenePhase) {
+            if scenePhase == .active {
+                Task{
+                    do {
+                        try await model.retrieveTask()
+                    } catch {
+                        print(error)
+                    }
+                }
+                print("active")
+            }else if scenePhase == .background {
+                print("background")
+                
+                
             }
         }
+//        .task {
+//            do {
+//                try await model.retrieveTask()
+//            }
+//            catch {
+//                print(error)
+//            }
+//        }
         .padding()
     }
 }
