@@ -27,10 +27,14 @@ class Model: ObservableObject {
     
     func updateTask(editedTask: TaskItem) async throws {
         tasksDictionary[editedTask.recordId!]?.isCompleted = editedTask.isCompleted
-        let record = try await db.privateCloudDatabase.record(for: editedTask.recordId!)
-        record[TaskRecordKeys.isCompleted.rawValue] = editedTask.isCompleted
-        
-        try await db.privateCloudDatabase.save(record)
+        do{
+            let record = try await db.privateCloudDatabase.record(for: editedTask.recordId!)
+            record[TaskRecordKeys.isCompleted.rawValue] = editedTask.isCompleted
+            try await db.privateCloudDatabase.save(record)
+        }catch{
+            tasksDictionary[editedTask.recordId!] = editedTask
+            // throw an error to let the user know that something went wrong with saving the changes to icloud
+        }
         
     }
     
