@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TodoListView: View {
+    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject private var model: Model
     @State private var taskTitle: String = ""
     var body: some View {
@@ -23,12 +24,20 @@ struct TodoListView: View {
                 }
             TaskListView()
             Spacer()
-        }.task {
-            do {
-                try await model.retrieveTask()
-            }
-            catch {
-                print(error)
+        }.onChange(of: scenePhase) {
+            if scenePhase == .active {
+                Task{
+                    do {
+                        try await model.retrieveTask()
+                    } catch {
+                        print(error)
+                    }
+                }
+                print("active")
+            }else if scenePhase == .background {
+                print("background")
+                
+                
             }
         }
         .padding()
