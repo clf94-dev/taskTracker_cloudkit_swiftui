@@ -23,6 +23,14 @@ struct TaskListView: View {
     var body: some View {
         List(taskItems, id: \.recordId) { taskItem in
             TaskItemView(task: taskItem, onUpdate: updateTask)
+                .swipeActions(allowsFullSwipe: false) {
+                    Button(role: .destructive) {
+                        model.deleteTask(taskItem: taskItem)
+                    } label: {
+                        Label("Delete", systemImage: "trash.fill")
+                    }
+
+            }
             
         }
     }
