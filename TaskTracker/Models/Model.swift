@@ -77,4 +77,22 @@ class Model: ObservableObject {
                 return tasks.filter{ !$0.isCompleted }
         }
     }
+    func deleteTask(taskItem: TaskItem) {
+        print("taskItem", taskItem)
+//        let recordID = CKRecordID(recordName: taskItem.recordId)
+//        print("recordID", recordID)
+        do {
+            try db.privateCloudDatabase.delete(withRecordID: taskItem.recordId!) { id, error in
+                if error == nil {
+                    print("successfuly deleted record", id ?? "nil")
+                    DispatchQueue.main.async {
+                        self.tasksDictionary[taskItem.recordId!] = nil
+                    }
+                    
+                }
+            }
+        }catch {
+            print(error)
+        }
+    }
 }
